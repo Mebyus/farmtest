@@ -1,0 +1,38 @@
+{
+    "editor.formatOnSave": true,
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.quickSuggestions": {
+            "strings": true
+        },
+        "editor.suggest.insertMode": "replace",
+        "gitlens.codeLens.scopes": ["document"]
+    },
+    "[less]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.suggest.insertMode": "replace",
+        "gitlens.codeLens.scopes": ["document"]
+    },
+    "[css]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.suggest.insertMode": "replace",
+        "gitlens.codeLens.scopes": ["document"]
+    },
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.suggest.insertMode": "replace",
+        "gitlens.codeLens.scopes": ["document"]
+    }
+}

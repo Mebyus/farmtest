@@ -1,0 +1,38 @@
+{
+    "extends": ["tslint:recommended", "tslint-config-prettier"],
+    "rules": {
+        "object-literal-sort-keys": false,
+        "jsdoc-format": false,
+        "no-console": false,
+        "no-empty": false,
+        "interface-name": false,
+        "prefer-const": false,
+        "no-reference": false,
+        "ordered-imports": false,
+        "member-ordering": false,
+        "curly": false,
+        "no-submodule-imports": false,
+        "no-implicit-dependencies": false,
+        "no-this-assignment": false,
+        "one-variable-per-declaration": false,
+        "radix": false,
+        "prefer-for-of": false,
+        "object-literal-shorthand": false,
+        "forin": false,
+        "max-classes-per-file": false,
+        "no-object-literal-type-assertion": false,
+        "no-var-requires": false,
+        "typedef": [
+            true,
+            "call-signature",
+            "arrow-call-signature",
+            "parameter",
+            "arrow-parameter",
+            "property-declaration",
+            "member-variable-declaration"
+        ],
+        "only-arrow-functions": false,
+        "no-eval": false,
+        "prefer-conditional-expression": false
+    }
+}
