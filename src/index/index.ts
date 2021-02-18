@@ -39,4 +39,7 @@ const config: TableConfig = {
 };
 
 const table = new Table(config, 'root');
+table.attachEvent('itemClick', (item: any): void => {
+    console.log(item);
+});
 table.parse(testData);

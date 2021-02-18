@@ -1,5 +1,6 @@
 import { TableConfig, ColumnConfig } from './table-config';
 
+type TableEvent = 'itemClick';
 /**
  * Class for a dynamic table creation and adding new data into the table
  */
@@ -8,6 +9,8 @@ export class Table {
     private readonly root: HTMLTableElement;
     private body: HTMLTableSectionElement;
     private header: HTMLTableSectionElement;
+    private handlers: Map<TableEvent, ((item: any) => void)[]>;
+    private data: any[];
 
     constructor(config: TableConfig, element?: HTMLTableElement | string) {
         this.config = config;
@@ -26,6 +29,8 @@ export class Table {
         } else {
             this.root = document.createElement('table');
         }
+        this.handlers = new Map<TableEvent, ((item: any) => void)[]>();
+        this.data = [];
         this.build();
     }
 
@@ -44,6 +49,15 @@ export class Table {
                 headerCell.width = column.gravity + '%';
             }
         });
+    }
+
+    public attachEvent(eventName: TableEvent, handler: (item: any) => void): void {
+        if (this.handlers.has(eventName)) {
+            let handlers = this.handlers.get(eventName);
+            handlers.push(handler);
+        } else {
+            this.handlers.set(eventName, [handler]);
+        }
     }
 
     /**
@@ -76,18 +90,27 @@ export class Table {
         return this.root;
     }
 
-    public parse(data: any): void {
+    public parse(data: any[]): void {
         if (!data) {
             return;
         }
         data.forEach((item: any): void => {
-            item.id = this.root.rows.length;
+            this.data.push(item);
             this.parseItem(item);
         });
     }
 
     private parseItem(item: any): void {
         let row = this.body.insertRow();
+        row.addEventListener('click', (e: MouseEvent): void => {
+            if (!this.handlers.has('itemClick')) {
+                return;
+            }
+            let handlers = this.handlers.get('itemClick');
+            for (let i = 0; i < handlers.length; i++) {
+                handlers[i](this.data[row.rowIndex - 1]);
+            }
+        });
         this.config.columns.forEach((column: ColumnConfig): void => {
             let cell = row.insertCell();
             let parser = this.chooseParser(column.type);
