@@ -4,13 +4,13 @@ type TableEvent = 'itemClick';
 /**
  * Class for a dynamic table creation and adding new data into the table
  */
-export class Table {
+export class Table<T> {
     private readonly config: TableConfig;
     private readonly root: HTMLTableElement;
     private body: HTMLTableSectionElement;
     private header: HTMLTableSectionElement;
-    private handlers: Map<TableEvent, ((item: any) => void)[]>;
-    private data: any[];
+    private handlers: Map<TableEvent, ((item: T) => void)[]>;
+    private data: T[];
 
     constructor(config: TableConfig, element?: HTMLTableElement | string) {
         this.config = config;
@@ -29,7 +29,7 @@ export class Table {
         } else {
             this.root = document.createElement('table');
         }
-        this.handlers = new Map<TableEvent, ((item: any) => void)[]>();
+        this.handlers = new Map<TableEvent, ((item: T) => void)[]>();
         this.data = [];
         this.build();
     }
@@ -51,7 +51,7 @@ export class Table {
         });
     }
 
-    public attachEvent(eventName: TableEvent, handler: (item: any) => void): void {
+    public attachEvent(eventName: TableEvent, handler: (item: T) => void): void {
         if (this.handlers.has(eventName)) {
             let handlers = this.handlers.get(eventName);
             handlers.push(handler);
@@ -90,17 +90,17 @@ export class Table {
         return this.root;
     }
 
-    public parse(data: any[]): void {
+    public parse(data: T[]): void {
         if (!data) {
             return;
         }
-        data.forEach((item: any): void => {
+        data.forEach((item: T): void => {
             this.data.push(item);
             this.parseItem(item);
         });
     }
 
-    private parseItem(item: any): void {
+    private parseItem(item: T): void {
         let row = this.body.insertRow();
         row.addEventListener('click', (e: MouseEvent): void => {
             if (!this.handlers.has('itemClick')) {
@@ -114,7 +114,7 @@ export class Table {
         this.config.columns.forEach((column: ColumnConfig): void => {
             let cell = row.insertCell();
             let parser = this.chooseParser(column.type);
-            let content = item[column.source];
+            let content = (item as any)[column.source];
             if (content !== undefined) {
                 parser(content, cell);
             }

@@ -1,7 +1,8 @@
 import { Table } from '../table/table';
-import { testData } from './test-data';
 import { TableConfig } from '../table/table-config';
 import './index.css';
+import { ReceiptModel } from '../model/receipt';
+import * as receipt from '../type/receipt';
 
 const config: TableConfig = {
     columns: [
@@ -38,8 +39,11 @@ const config: TableConfig = {
     ],
 };
 
-const table = new Table(config, 'root');
+const table = new Table<receipt.Info>(config, 'root');
+const model = new ReceiptModel();
 table.attachEvent('itemClick', (item: any): void => {
     console.log(item);
 });
-table.parse(testData);
+model.getAll().then((entries: receipt.Info[]): void => {
+    table.parse(entries);
+});

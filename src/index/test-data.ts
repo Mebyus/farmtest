@@ -1,5 +1,6 @@
 export const testData = [
     {
+        id: 10,
         branch: 'Филиал 1',
         docType: 'Документ 32',
         posCount: 2,
@@ -8,6 +9,7 @@ export const testData = [
         sumRoznWNDS: 304.3,
     },
     {
+        id: 12,
         branch: 'Филиал 21',
         docType: 'Большой чек',
         posCount: 1,
@@ -16,6 +18,7 @@ export const testData = [
         sumRoznWNDS: 1072,
     },
     {
+        id: 1234,
         branch: 'Филиал "У Бобра"',
         docType: 'Документ 0',
         posCount: 10,

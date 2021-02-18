@@ -1,6 +1,7 @@
+import { ReceiptModel } from '../model/receipt';
 import { Table } from '../table/table';
 import { TableConfig } from '../table/table-config';
-import { testData } from './test-data';
+import * as receipt from '../type/receipt';
 
 const config: TableConfig = {
     columns: [
@@ -42,5 +43,8 @@ const config: TableConfig = {
     ],
 };
 
-const table = new Table(config, 'root');
-table.parse(testData);
+const table = new Table<receipt.Detail>(config, 'root');
+const model = new ReceiptModel();
+model.getDetails(10).then((entries: receipt.Detail[]): void => {
+    table.parse(entries);
+});
