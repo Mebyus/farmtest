@@ -1,6 +1,6 @@
 import { Table } from '../table/table';
 import { TableConfig } from '../table/table-config';
-import './index.css';
+import '../table/table.css';
 import { ReceiptModel } from '../model/receipt';
 import * as receipt from '../type/receipt';
 

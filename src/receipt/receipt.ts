@@ -2,6 +2,7 @@ import { ReceiptModel } from '../model/receipt';
 import { Table } from '../table/table';
 import { TableConfig } from '../table/table-config';
 import * as receipt from '../type/receipt';
+import '../table/table.css';
 
 const config: TableConfig = {
     columns: [
