@@ -1,5 +1,5 @@
 export class BaseModel {
-    public get(uri: string, params: any): Promise<any> {
+    public get(uri: string, params?: any): Promise<any> {
         let url = uri;
         if (params) {
             let query = new URLSearchParams(params);

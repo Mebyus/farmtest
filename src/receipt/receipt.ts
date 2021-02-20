@@ -44,8 +44,22 @@ const config: TableConfig = {
     ],
 };
 
+function getUrlParams(search: string): any {
+    const hashes = search.slice(search.indexOf('?') + 1).split('&');
+    const params: any = {};
+    hashes.forEach((hash: string): void => {
+        const [key, val] = hash.split('=');
+        params[key] = decodeURIComponent(val);
+    });
+    return params;
+}
+
 const table = new Table<receipt.Detail>(config, 'root');
 const model = new ReceiptModel();
-model.getDetails(10).then((entries: receipt.Detail[]): void => {
-    table.parse(entries);
-});
+const queryParams = getUrlParams(window.location.search);
+const receiptId = parseInt(queryParams.id);
+if (receiptId) {
+    model.getDetails(receiptId).then((entries: receipt.Detail[]): void => {
+        table.parse(entries);
+    });
+}
