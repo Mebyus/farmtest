@@ -1,5 +1,9 @@
 {
     "editor.formatOnSave": true,
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/home/mebyus/Downloads/apache-tomcat-10.0.2/lib/servlet-api.jar"
+    ],
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },

@@ -19,7 +19,9 @@ public class Receipt extends HttpServlet {
             throws ServletException, IOException {
         try {
             Connection con = DatabaseConnection.initializeDatabase();
-            String query = "select public.all_receipts_json();";
+            String page = request.getParameter("p");
+            String size = request.getParameter("s");
+            String query = "select public.receipts_json(" + page + "::int4, " + size + "::int2);";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query);
             String res = "";

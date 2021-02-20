@@ -44,6 +44,6 @@ const model = new ReceiptModel();
 table.attachEvent('itemClick', (item: any): void => {
     window.location.assign(`receipt.html?id=${item.id}`);
 });
-model.getAll().then((entries: receipt.Info[]): void => {
+model.getReceiptPage(1, 100).then((entries: receipt.Info[]): void => {
     table.parse(entries);
 });
