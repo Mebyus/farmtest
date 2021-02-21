@@ -140,6 +140,21 @@ export class Bar {
         return this.currentPage;
     }
 
+    public changePagesNumber(pages: number): void {
+        if (!pages || !Number.isInteger(pages)) {
+            return;
+        }
+        if (pages < 1 || this.pages === pages) {
+            return;
+        }
+        this.pages = pages;
+        if (this.currentPage > this.pages) {
+            this.changePage(this.pages);
+        } else {
+            this.render();
+        }
+    }
+
     private computePage(want: number): number {
         if (!want || !Number.isInteger(want)) {
             return 1;

@@ -46,6 +46,9 @@ const model = new ReceiptModel();
 table.attachEvent('itemClick', (item: any): void => {
     window.location.assign(`receipt.html?id=${item.id}`);
 });
+model.estimateCount().then((estimatedRows: number): void => {
+    navigationBar.changePagesNumber(Math.ceil(estimatedRows / 100));
+});
 navigationBar.attachEvent('pageChange', (n: number, o: number): void => {
     model.getReceiptPage(n, 100).then((entries: receipt.Info[]): void => {
         table.clearData();

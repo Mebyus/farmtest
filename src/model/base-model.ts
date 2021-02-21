@@ -1,5 +1,11 @@
 export class BaseModel {
-    public get(uri: string, params?: any): Promise<any> {
+    public getJSON(uri: string, params?: any): Promise<any> {
+        return this.get(uri, params).then((r: Response): any => {
+            return r.json();
+        });
+    }
+
+    public get(uri: string, params?: any): Promise<Response> {
         let url = uri;
         if (params) {
             let query = new URLSearchParams(params);
@@ -7,8 +13,6 @@ export class BaseModel {
         }
         return fetch(url, {
             method: 'GET',
-        }).then((r: Response): any => {
-            return r.json();
         });
     }
 }
