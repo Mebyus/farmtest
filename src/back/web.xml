@@ -61,6 +61,11 @@
     </servlet>
 
     <servlet>
+      <servlet-name>Estimate</servlet-name>
+      <servlet-class>github.mebyus.farmtest.Estimate</servlet-class>
+    </servlet>
+
+    <servlet>
       <servlet-name>Details</servlet-name>
       <servlet-class>github.mebyus.farmtest.Details</servlet-class>
     </servlet>
@@ -68,6 +73,11 @@
     <servlet-mapping>
         <servlet-name>Receipt</servlet-name>
         <url-pattern>/receipt</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>Estimate</servlet-name>
+        <url-pattern>/receipt/estimate</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>

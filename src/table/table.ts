@@ -51,6 +51,11 @@ export class Table<T> {
         });
     }
 
+    public clearData(): void {
+        this.data = [];
+        this.body.innerHTML = '';
+    }
+
     public attachEvent(eventName: TableEvent, handler: (item: T) => void): void {
         if (this.handlers.has(eventName)) {
             let handlers = this.handlers.get(eventName);
