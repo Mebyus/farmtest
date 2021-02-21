@@ -31,18 +31,14 @@ class Spinner {
     private show(): void {
         if (!this.on) {
             this.on = true;
-            // this.spinner.show();
-            // this.spinner.classList.add({ opacity: '1' });
-            this.spinner.classList.remove('hidden');
+            this.spinner.style.display = 'block';
         }
     }
 
     private hide(): void {
         if (this.on) {
             this.on = false;
-            // this.spinner.classList.remove({ opacity: '0' });
-            // this.spinner.hide();
-            this.spinner.classList.add('hidden');
+            this.spinner.style.display = 'none';
         }
     }
 }

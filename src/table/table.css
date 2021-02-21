@@ -22,9 +22,3 @@ td {
 tr:nth-child(odd) {
     background: rgb(233, 233, 233);
 }
-
-tbody tr:hover {
-    color: white;
-    cursor: pointer;
-    background: rgb(10, 150, 155);
-}

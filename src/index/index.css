@@ -1,0 +1,9 @@
+tbody tr:hover {
+    color: white;
+    cursor: pointer;
+    background: rgb(10, 150, 155);
+}
+
+#goto {
+    margin-bottom: 5px;
+}
